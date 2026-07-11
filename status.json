@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-11T15:32:22.077Z",
+  "updatedAt": "2026-07-11T15:34:36.040Z",
   "sondes": {
     "sonde-a-visibility": {
       "status": "not_published",
@@ -20,5 +20,7 @@
       "installs": null
     }
   },
-  "landings": {}
+  "landings": {
+    "ducens.io": "ok"
+  }
 }
