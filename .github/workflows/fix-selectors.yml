@@ -53,4 +53,5 @@ jobs:
               cassée, commente sur l'issue avec `gh issue comment` pour demander la
               précision au lieu de deviner.
           claude_args: |
+            --model claude-sonnet-5
             --allowedTools "Read,Glob,Grep,Edit(selectors.json),Edit(sonde-a-visibility/selectors.json),Edit(sonde-b-geo-audit/selectors.json),Edit(tests/**),Write(tests/**),Bash(git checkout:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(gh pr create:*),Bash(gh issue comment:*),Bash(node --test:*)"
