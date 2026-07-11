@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-11T00:00:00.000Z",
+  "updatedAt": "2026-07-11T12:00:00.000Z",
   "targets": {
     "googleAiOverviewContainer": {
       "version": 1,
@@ -26,8 +26,9 @@
       ]
     },
     "chatgptAnswerContainer": {
-      "version": 1,
+      "version": 2,
       "strategies": [
+        { "kind": "css", "value": "[data-turn=\"assistant\"]" },
         { "kind": "css", "value": "[data-message-author-role=\"assistant\"]" },
         { "kind": "aria", "value": "[data-testid^=\"conversation-turn\"] [data-message-author-role=\"assistant\"]" },
         { "kind": "structural", "value": "main [class*=\"markdown\"]" }
