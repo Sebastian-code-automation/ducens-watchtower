@@ -1,1 +1,4 @@
 date,sonde,cws_id,status,rating,installs,alert_flag
+2026-07-11,sonde-a-visibility,,not_published,,,0
+2026-07-11,sonde-b-geo-audit,,not_published,,,0
+2026-07-11,sonde-c-ecom,,not_published,,,0
