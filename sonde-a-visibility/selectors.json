@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-11T00:00:00.000Z",
+  "targets": {
+    "googleAiOverviewContainer": {
+      "version": 1,
+      "strategies": [
+        { "kind": "css", "value": "div[data-attrid=\"AIOverview\"], div[data-attrid*=\"GenerativeContent\"]" },
+        { "kind": "aria", "value": "[aria-label=\"AI Overview\" i], [aria-label=\"Aper\\u00e7u IA\" i]" },
+        { "kind": "text-anchor", "value": "AI Overview|Aper\\u00e7u par l'IA|Aper\\u00e7u IA", "scope": "#search, #rcnt" },
+        { "kind": "structural", "value": "#search > div > div:first-child:has(a[href^=\"http\"]):has(div[role=\"heading\"])" }
+      ]
+    },
+    "googleAiOverviewLinks": {
+      "version": 1,
+      "strategies": [
+        { "kind": "css", "value": "a[href^=\"http\"]:not([href*=\"google.com\"])" },
+        { "kind": "structural", "value": "a[href^=\"http\"]" }
+      ]
+    },
+    "googleSearchQuery": {
+      "version": 1,
+      "strategies": [
+        { "kind": "css", "value": "textarea[name=\"q\"], input[name=\"q\"]" },
+        { "kind": "aria", "value": "[aria-label=\"Search\" i], [aria-label=\"Recherche\" i]" }
+      ]
+    },
+    "chatgptAnswerContainer": {
+      "version": 1,
+      "strategies": [
+        { "kind": "css", "value": "[data-message-author-role=\"assistant\"]" },
+        { "kind": "aria", "value": "[data-testid^=\"conversation-turn\"] [data-message-author-role=\"assistant\"]" },
+        { "kind": "structural", "value": "main [class*=\"markdown\"]" }
+      ]
+    },
+    "chatgptCitationLinks": {
+      "version": 1,
+      "strategies": [
+        { "kind": "css", "value": "a[href^=\"http\"]" },
+        { "kind": "structural", "value": "a[target=\"_blank\"]" }
+      ]
+    },
+    "chatgptUserPrompt": {
+      "version": 1,
+      "strategies": [
+        { "kind": "css", "value": "[data-message-author-role=\"user\"]" },
+        { "kind": "structural", "value": "main [data-testid^=\"conversation-turn\"]" }
+      ]
+    },
+    "perplexityAnswerContainer": {
+      "version": 1,
+      "strategies": [
+        { "kind": "css", "value": "div[class*=\"prose\"], #markdown-content-0, [id^=\"markdown-content\"]" },
+        { "kind": "aria", "value": "[aria-label=\"Answer\" i]" },
+        { "kind": "structural", "value": "main article, main [class*=\"answer\"]" }
+      ]
+    },
+    "perplexityCitationLinks": {
+      "version": 1,
+      "strategies": [
+        { "kind": "css", "value": "a[href^=\"http\"][class*=\"citation\"], a[href^=\"http\"][rel~=\"noreferrer\"]" },
+        { "kind": "aria", "value": "a[aria-label^=\"Source\" i]" },
+        { "kind": "structural", "value": "a[href^=\"http\"]" }
+      ]
+    },
+    "perplexityUserPrompt": {
+      "version": 1,
+      "strategies": [
+        { "kind": "css", "value": "[class*=\"query\"] h1, [class*=\"query\"] textarea" },
+        { "kind": "structural", "value": "main h1" }
+      ]
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-11T00:00:00.000Z",
+  "targets": {
+    "author": {
+      "selectors": [
+        "meta[name=\"author\"]",
+        "[rel=\"author\"]",
+        "[itemprop=\"author\"]",
+        ".author",
+        ".byline",
+        ".post-author",
+        "[class*=\"author-name\"]"
+      ]
+    },
+    "publishDate": {
+      "selectors": [
+        "time[datetime]",
+        "meta[property=\"article:published_time\"]",
+        "meta[name=\"date\"]",
+        "[itemprop=\"datePublished\"]",
+        "[class*=\"publish-date\"]",
+        "[class*=\"post-date\"]"
+      ]
+    },
+    "mainContent": {
+      "selectors": ["main", "article", "[role=\"main\"]"]
+    }
+  }
+}

@@ -1,0 +1,64 @@
+name: Watchtower — détection quotidienne
+
+on:
+  schedule:
+    - cron: "0 7 * * *" # 07:00 UTC chaque jour, indépendant du PC de Sebastian
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  scrape-store-reviews:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Scrape les fiches Chrome Web Store et journalise les métriques
+        run: node scripts/scrape-reviews.mjs
+      - name: Commit metrics.csv + status.json
+        run: |
+          git config user.name "watchtower-bot"
+          git config user.email "watchtower-bot@users.noreply.github.com"
+          git add metrics.csv status.json
+          git commit -m "chore: métriques stores $(date -u +%F)" || echo "Aucun changement"
+          git push
+      - name: Ouvre une issue ALERT si une casse est détectée
+        if: hashFiles('alert-body.txt') != ''
+        run: |
+          gh issue create \
+            --title "ALERT — casse détectée sur une sonde ($(date -u +%F))" \
+            --body-file alert-body.txt \
+            --label ALERT
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+  ping-landings:
+    needs: scrape-store-reviews # sérialisé pour éviter une course au push sur status.json/metrics.csv
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Ping les landings ducens.io
+        run: node scripts/ping-landings.mjs
+      - name: Commit status.json
+        run: |
+          git config user.name "watchtower-bot"
+          git config user.email "watchtower-bot@users.noreply.github.com"
+          git add status.json
+          git commit -m "chore: statut landings $(date -u +%F)" || echo "Aucun changement"
+          git push
+      - name: Ouvre une issue si une landing est down
+        if: hashFiles('landing-down.txt') != ''
+        run: |
+          gh issue create \
+            --title "ALERT — landing down ($(date -u +%F))" \
+            --body-file landing-down.txt \
+            --label ALERT
+        env:
+          GH_TOKEN: ${{ github.token }}

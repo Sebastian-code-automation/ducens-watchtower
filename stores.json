@@ -1,0 +1,17 @@
+[
+  {
+    "id": "sonde-a-visibility",
+    "name": "AI Visibility Checker",
+    "cwsId": null
+  },
+  {
+    "id": "sonde-b-geo-audit",
+    "name": "GEO Site Auditor",
+    "cwsId": null
+  },
+  {
+    "id": "sonde-c-ecom",
+    "name": "Real Profit",
+    "cwsId": null
+  }
+]

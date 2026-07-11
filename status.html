@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Watchtower — statut des sondes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 640px; margin: 2rem auto; padding: 0 1rem; color: #1a1a1a; }
+  h1 { font-size: 1.25rem; }
+  .row { display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid #eee; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .ok { background: #2ea043; }
+  .alert { background: #d1242f; }
+  .fetch_error { background: #d1242f; }
+  .not_published { background: #9a9a9a; }
+  .meta { color: #666; font-size: 0.85rem; }
+  small { color: #888; }
+</style>
+</head>
+<body>
+<h1>Watchtower — statut des sondes</h1>
+<p class="meta">Dernière mise à jour : <span id="updatedAt">chargement…</span></p>
+<div id="sondes"></div>
+<h2 style="font-size:1rem;margin-top:2rem;">Landings</h2>
+<div id="landings"></div>
+<p><small>Si une sonde affiche une erreur dans votre extension, utilisez le bouton "Report" ou le bookmarklet <code>tools/copy-dom.js</code> du <a href="https://github.com/Sebastian-code-automation/ducens-watchtower">repo</a> pour signaler la page cassée.</small></p>
+<script>
+fetch("./status.json", { cache: "no-store" })
+  .then((r) => r.json())
+  .then((data) => {
+    document.getElementById("updatedAt").textContent = data.updatedAt ?? "inconnue";
+    const sondes = document.getElementById("sondes");
+    for (const [id, s] of Object.entries(data.sondes ?? {})) {
+      const row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML = `<span class="dot ${s.status}"></span><strong>${id}</strong><span class="meta">${s.status}${s.rating ? " · note " + s.rating : ""}${s.installs ? " · " + s.installs + " installs" : ""}</span>`;
+      sondes.appendChild(row);
+    }
+    const landings = document.getElementById("landings");
+    for (const [name, st] of Object.entries(data.landings ?? {})) {
+      const row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML = `<span class="dot ${st === "ok" ? "ok" : "alert"}"></span><strong>${name}</strong><span class="meta">${st}</span>`;
+      landings.appendChild(row);
+    }
+  })
+  .catch(() => {
+    document.getElementById("updatedAt").textContent = "erreur de chargement";
+  });
+</script>
+</body>
+</html>

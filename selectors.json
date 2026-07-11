@@ -1,0 +1,75 @@
+{
+  "version": "0.1.0",
+  "updatedAt": "2026-07-11",
+  "etsy": {
+    "listing.price": {
+      "strategies": [
+        { "kind": "css", "value": "[data-buy-box-region='price'] .wt-text-title-larger" },
+        { "kind": "css", "value": "p[data-selector='price-only']" },
+        { "kind": "aria", "attr": "data-price", "value": "*" },
+        { "kind": "text", "tag": "p", "contains": "$" },
+        { "kind": "text", "tag": "span", "contains": "$" }
+      ]
+    },
+    "listing.title": {
+      "strategies": [
+        { "kind": "css", "value": "h1[data-buy-box-listing-title]" },
+        { "kind": "css", "value": "h1.wt-text-body-03" },
+        { "kind": "structural", "description": "first h1 on page", "selector": "h1" }
+      ]
+    },
+    "listing.shippingCost": {
+      "strategies": [
+        { "kind": "css", "value": "[data-shipping-region] .wt-text-title-larger" },
+        { "kind": "text", "tag": "span", "contains": "shipping" },
+        { "kind": "structural", "description": "shipping section fallback", "selector": "[data-shipping-region]" }
+      ]
+    },
+    "listing.quantitySold": {
+      "strategies": [
+        { "kind": "css", "value": "[data-sold-count]" },
+        { "kind": "text", "tag": "span", "contains": "sold" }
+      ]
+    },
+    "page.isListing": {
+      "strategies": [
+        { "kind": "css", "value": "[data-buy-box-region]" },
+        { "kind": "structural", "description": "URL contains /listing/", "selector": "body" }
+      ]
+    },
+    "page.isShopManager": {
+      "strategies": [
+        { "kind": "css", "value": "[data-shop-manager-app]" },
+        { "kind": "structural", "description": "URL contains /your/shops/", "selector": "body" }
+      ]
+    },
+    "shopManager.row": {
+      "strategies": [
+        { "kind": "css", "value": "table[data-listings-table] tbody tr" },
+        { "kind": "structural", "description": "generic listing row", "selector": "tbody tr" }
+      ]
+    },
+    "shopManager.rowPrice": {
+      "strategies": [
+        { "kind": "css", "value": "td[data-col='price']" },
+        { "kind": "structural", "description": "price column fallback", "selector": "td:nth-child(3)" }
+      ]
+    },
+    "shopManager.rowTitle": {
+      "strategies": [
+        { "kind": "css", "value": "td[data-col='title'] a" },
+        { "kind": "structural", "description": "title column fallback", "selector": "td:nth-child(1) a" }
+      ]
+    }
+  },
+  "etsy-fees": {
+    "transactionFeeRate": 0.065,
+    "processingFeeRate": 0.03,
+    "processingFeeFixed": 0.25,
+    "listingFeeUsd": 0.20,
+    "offsiteAdsRateUnderThreshold": 0.15,
+    "offsiteAdsRateAtThreshold": 0.12,
+    "offsiteAdsThresholdUsd": 10000,
+    "effectiveAsOf": "2026-01-01"
+  }
+}
