@@ -23,9 +23,15 @@ jobs:
           label_trigger: fix-selectors
           show_full_output: true
           prompt: |
-            Cette issue GitHub signale un sélecteur cassé sur une des 3 sondes
-            (extensions Chrome) du portfolio Ducens. L'issue contient le HTML
-            pertinent de la page cassée, collé par Sebastian.
+            Cette issue GitHub (#${{ github.event.issue.number }}) signale un
+            sélecteur cassé sur une des 3 sondes (extensions Chrome) du
+            portfolio Ducens. Voici son contenu intégral (ne cherche pas à la
+            relire via `gh issue view`, tu n'en as pas besoin) :
+
+            Titre : ${{ github.event.issue.title }}
+
+            Corps :
+            ${{ github.event.issue.body }}
 
             Fichiers de sélecteurs (un par sonde, format différent pour chacune) :
             - sonde-a-visibility/selectors.json (AI Visibility Checker : Google AI Overview, ChatGPT, Perplexity)
@@ -51,8 +57,8 @@ jobs:
             - Description de PR claire (quelle sonde, quelle cible, quelle stratégie
               ajoutée, pourquoi).
             - Si l'issue ne contient pas assez d'info pour identifier la cible
-              cassée, commente sur l'issue avec `gh issue comment` pour demander la
-              précision au lieu de deviner.
+              cassée, commente avec `gh issue comment ${{ github.event.issue.number }}`
+              pour demander la précision au lieu de deviner.
           claude_args: |
             --model claude-sonnet-5
             --allowedTools "Read,Glob,Grep,Edit(selectors.json),Edit(sonde-a-visibility/selectors.json),Edit(sonde-b-geo-audit/selectors.json),Edit(tests/**),Write(tests/**),Bash(git checkout:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(gh pr create:*),Bash(gh issue comment:*),Bash(node --test:*)"
