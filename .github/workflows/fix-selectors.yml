@@ -43,10 +43,14 @@ jobs:
             - N'édite RIEN d'autre que selectors.json, sonde-a-visibility/selectors.json,
               sonde-b-geo-audit/selectors.json, et des fichiers sous tests/.
             - Ne touche jamais au code des extensions (hors ce repo de toute façon).
-            - Ouvre une PR avec une description claire (quelle sonde, quelle cible,
-              quelle stratégie ajoutée, pourquoi). Ne merge JAMAIS la PR toi-même.
+            - Crée une nouvelle branche (`git checkout -b fix-selectors/issue-<numéro>`),
+              commit tes changements dessus, `git push -u origin <branche>`, puis ouvre
+              la PR avec `gh pr create` (base: main). Ne commit et ne push JAMAIS
+              directement sur main. Ne merge JAMAIS la PR toi-même.
+            - Description de PR claire (quelle sonde, quelle cible, quelle stratégie
+              ajoutée, pourquoi).
             - Si l'issue ne contient pas assez d'info pour identifier la cible
-              cassée, commente sur l'issue pour demander la précision au lieu de
-              deviner.
+              cassée, commente sur l'issue avec `gh issue comment` pour demander la
+              précision au lieu de deviner.
           claude_args: |
-            --allowedTools "Read,Glob,Grep,Edit(selectors.json),Edit(sonde-a-visibility/selectors.json),Edit(sonde-b-geo-audit/selectors.json),Edit(tests/**),Write(tests/**)"
+            --allowedTools "Read,Glob,Grep,Edit(selectors.json),Edit(sonde-a-visibility/selectors.json),Edit(sonde-b-geo-audit/selectors.json),Edit(tests/**),Write(tests/**),Bash(git checkout:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(gh pr create:*),Bash(gh issue comment:*),Bash(node --test:*)"
