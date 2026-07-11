@@ -7,8 +7,7 @@
       "strategies": [
         { "kind": "css", "value": "div[data-attrid=\"AIOverview\"], div[data-attrid*=\"GenerativeContent\"]" },
         { "kind": "aria", "value": "[aria-label=\"AI Overview\" i], [aria-label=\"Aper\\u00e7u IA\" i]" },
-        { "kind": "text-anchor", "value": "AI Overview|Aper\\u00e7u par l'IA|Aper\\u00e7u IA", "scope": "#search, #rcnt" },
-        { "kind": "structural", "value": "#search > div > div:first-child:has(a[href^=\"http\"]):has(div[role=\"heading\"])" }
+        { "kind": "text-anchor", "value": "AI Overview|Aper\\u00e7u par l'IA|Aper\\u00e7u IA", "scope": "#search, #rcnt" }
       ]
     },
     "googleAiOverviewLinks": {
