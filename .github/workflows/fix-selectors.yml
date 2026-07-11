@@ -21,6 +21,7 @@ jobs:
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           label_trigger: fix-selectors
+          show_full_output: true
           prompt: |
             Cette issue GitHub signale un sélecteur cassé sur une des 3 sondes
             (extensions Chrome) du portfolio Ducens. L'issue contient le HTML
