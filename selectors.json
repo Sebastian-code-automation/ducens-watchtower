@@ -33,14 +33,12 @@
     },
     "page.isListing": {
       "strategies": [
-        { "kind": "css", "value": "[data-buy-box-region]" },
-        { "kind": "structural", "description": "URL contains /listing/", "selector": "body" }
+        { "kind": "css", "value": "[data-buy-box-region]" }
       ]
     },
     "page.isShopManager": {
       "strategies": [
-        { "kind": "css", "value": "[data-shop-manager-app]" },
-        { "kind": "structural", "description": "URL contains /your/shops/", "selector": "body" }
+        { "kind": "css", "value": "[data-shop-manager-app]" }
       ]
     },
     "shopManager.row": {
