@@ -1,6 +1,18 @@
 [
   {
-    "name": "ducens.io",
+    "name": "home",
     "url": "https://ducens.io"
+  },
+  {
+    "name": "ai-visibility-checker",
+    "url": "https://ducens.io/ai-visibility-checker"
+  },
+  {
+    "name": "geo-site-auditor",
+    "url": "https://ducens.io/geo-site-auditor"
+  },
+  {
+    "name": "real-profit",
+    "url": "https://ducens.io/real-profit"
   }
 ]
