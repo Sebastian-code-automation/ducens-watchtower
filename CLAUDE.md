@@ -10,6 +10,11 @@ Règles : workflows minimaux et lisibles, aucun secret en clair, permissions Act
 Watchtower opérationnel de bout en bout : repo public + Pages actif, cron `detect.yml` vert, workflow `fix-selectors.yml` validé sur un cas réel (issue #1 → PR #2 → mergée à la main → fix live sur Pages en <1 min). Critère de done du sprint atteint. Reste : laisser tourner le cron 2 jours consécutifs (critère SPEC.md), committer les fixes d'URL selectors.json dans les 3 repos sondes (faits hors scope, non commités).
 
 ## Handoffs
+## #3 — 2026-07-12 — Consolidation (landings + vérif cron)
+**Done :** working tree déjà clean à l'arrivée (CLAUDE.md + `sonde-a-visibility/selectors.json` commités/poussés lors des sessions précédentes). `landings.json` déjà en place avec les 4 URLs ducens.io (home, ai-visibility-checker, geo-site-auditor, real-profit) via commit `4e2dd89`.
+**Cron :** 1 seule exéc `schedule` à ce jour → 2026-07-12 09:03Z, success. Runs du 07-11 = `workflow_dispatch` manuels, ne comptent pas. Critère SPEC « 2 jours consécutifs » **non encore atteint** : attendre le run planifié du 2026-07-13 pour valider.
+**Reste / bloquant :** aucun bloquant. Revérifier `gh run list --workflow=detect.yml --event=schedule` après le 2026-07-13.
+
 ## #2 — 2026-07-11 — fix-selectors validé de bout en bout (PR #2 mergée)
 **Done :** 4 bugs de config trouvés et corrigés sur des runs réels (id-token OIDC, app GitHub Claude non installée, allowedTools sans Bash git/gh, prompt sans contenu d'issue → Claude tentait `gh issue view` jamais autorisé). PR #2 ouverte automatiquement, diff minimal et correct (+3/-2 sur `sonde-a-visibility/selectors.json`), mergée à la main sur confirmation explicite. Fix vérifié live sur GitHub Pages.
 **Fichiers :** `.github/workflows/fix-selectors.yml` (prompt injecte désormais `github.event.issue.title`/`.body`).
