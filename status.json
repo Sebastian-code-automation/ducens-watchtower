@@ -1,26 +1,29 @@
 {
-  "updatedAt": "2026-07-11T15:34:36.040Z",
+  "updatedAt": "2026-07-12T08:51:29.835Z",
   "sondes": {
     "sonde-a-visibility": {
       "status": "not_published",
-      "lastCheck": "2026-07-11",
+      "lastCheck": "2026-07-12",
       "rating": null,
       "installs": null
     },
     "sonde-b-geo-audit": {
       "status": "not_published",
-      "lastCheck": "2026-07-11",
+      "lastCheck": "2026-07-12",
       "rating": null,
       "installs": null
     },
     "sonde-c-ecom": {
       "status": "not_published",
-      "lastCheck": "2026-07-11",
+      "lastCheck": "2026-07-12",
       "rating": null,
       "installs": null
     }
   },
   "landings": {
-    "ducens.io": "ok"
+    "home": "ok",
+    "ai-visibility-checker": "ok",
+    "geo-site-auditor": "ok",
+    "real-profit": "ok"
   }
 }
