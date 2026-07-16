@@ -1,6 +1,6 @@
 {
-  "version": "0.1.0",
-  "updatedAt": "2026-07-11",
+  "version": "0.1.1",
+  "updatedAt": "2026-07-16",
   "etsy": {
     "listing.price": {
       "strategies": [
@@ -68,6 +68,5 @@
     "offsiteAdsRateUnderThreshold": 0.15,
     "offsiteAdsRateAtThreshold": 0.12,
     "offsiteAdsThresholdUsd": 10000,
-    "effectiveAsOf": "2026-01-01"
-  }
-}
+    "offsiteAdsMaxUsd": 100,
+    "effect
