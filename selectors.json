@@ -69,4 +69,6 @@
     "offsiteAdsRateAtThreshold": 0.12,
     "offsiteAdsThresholdUsd": 10000,
     "offsiteAdsMaxUsd": 100,
-    "effect
+    "effectiveAsOf": "2026-01-01"
+  }
+}
