@@ -1,0 +1,48 @@
+name: Watchtower — keepalive (empêche l'auto-désactivation du cron à 60j)
+
+# POURQUOI : GitHub désactive un scheduled workflow après 60 jours sans commit
+# QUALIFIANT. Les commits du watchtower-bot (GITHUB_TOKEN) ne comptent PAS.
+# Ce workflow fait un commit mensuel AVEC un PAT (secret KEEPALIVE_PAT), ce qui
+# réarme le compteur et garde detect.yml vivant pendant toute l'absence.
+#
+# ACTIVATION : créer un fine-grained PAT (scope Contents: Read and write sur ce
+# repo), l'ajouter dans Settings > Secrets and variables > Actions sous le nom
+# KEEPALIVE_PAT. Tant que le secret est absent, le job s'arrête proprement.
+
+on:
+  schedule:
+    - cron: "17 6 1 * *"   # le 1er de chaque mois, 06:17 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vérifier que le PAT existe
+        env:
+          PAT: ${{ secrets.KEEPALIVE_PAT }}
+        run: |
+          if [ -z "$PAT" ]; then
+            echo "KEEPALIVE_PAT absent — keepalive inactif. Ajoute le secret pour l'activer."
+            exit 0
+          fi
+          echo "PAT présent, keepalive actif." >> "$GITHUB_ENV" && echo "ACTIVE=1" >> "$GITHUB_ENV"
+
+      - name: Checkout avec PAT
+        if: env.ACTIVE == '1'
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.KEEPALIVE_PAT }}
+
+      - name: Commit timestamp mensuel
+        if: env.ACTIVE == '1'
+        run: |
+          git config user.name "keepalive-bot"
+          git config user.email "keepalive-bot@users.noreply.github.com"
+          date -u +%FT%TZ > .keepalive
+          git add .keepalive
+          git commit -m "chore: keepalive $(date -u +%F)" || { echo "Rien à commiter"; exit 0; }
+          git push
