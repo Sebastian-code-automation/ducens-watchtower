@@ -14,5 +14,13 @@
   {
     "name": "real-profit",
     "url": "https://ducens.io/real-profit"
+  },
+  {
+    "name": "selectors-sonde-a",
+    "url": "https://sebastian-code-automation.github.io/ducens-watchtower/sonde-a-visibility/selectors.json"
+  },
+  {
+    "name": "selectors-sonde-b",
+    "url": "https://sebastian-code-automation.github.io/ducens-watchtower/sonde-b-geo-audit/selectors.json"
   }
 ]
