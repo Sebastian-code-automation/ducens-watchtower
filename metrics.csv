@@ -134,3 +134,6 @@ date,sonde,cws_id,status,rating,installs,alert_flag
 2026-08-21,sonde-a-visibility,odhjoplggcgjmgicckgnaamelnmbdikl,ok,,,0
 2026-08-21,sonde-b-geo-audit,oknlghbahobagkgcdahklmpnbnfelmnm,ok,,2,0
 2026-08-21,sonde-c-ecom,pcgaenelgkfkbggjnkcnemnipgfilekm,ok,,,0
+2026-08-22,sonde-a-visibility,odhjoplggcgjmgicckgnaamelnmbdikl,ok,,,0
+2026-08-22,sonde-b-geo-audit,oknlghbahobagkgcdahklmpnbnfelmnm,ok,,2,0
+2026-08-22,sonde-c-ecom,pcgaenelgkfkbggjnkcnemnipgfilekm,ok,,,0
