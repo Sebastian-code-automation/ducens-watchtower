@@ -1,21 +1,21 @@
 {
-  "updatedAt": "2026-11-09T17:14:50.126Z",
+  "updatedAt": "2026-11-10T15:26:55.367Z",
   "sondes": {
     "sonde-a-visibility": {
-      "status": "ok",
-      "lastCheck": "2026-11-09",
+      "status": "alert",
+      "lastCheck": "2026-11-10",
       "rating": null,
       "installs": null
     },
     "sonde-b-geo-audit": {
       "status": "alert",
-      "lastCheck": "2026-11-09",
+      "lastCheck": "2026-11-10",
       "rating": null,
       "installs": "5"
     },
     "sonde-c-ecom": {
-      "status": "ok",
-      "lastCheck": "2026-11-09",
+      "status": "alert",
+      "lastCheck": "2026-11-10",
       "rating": null,
       "installs": null
     }
