@@ -1,21 +1,21 @@
 {
-  "updatedAt": "2026-11-16T16:49:35.485Z",
+  "updatedAt": "2026-11-17T16:44:36.426Z",
   "sondes": {
     "sonde-a-visibility": {
       "status": "alert",
-      "lastCheck": "2026-11-16",
+      "lastCheck": "2026-11-17",
       "rating": null,
       "installs": "3"
     },
     "sonde-b-geo-audit": {
       "status": "alert",
-      "lastCheck": "2026-11-16",
+      "lastCheck": "2026-11-17",
       "rating": null,
       "installs": null
     },
     "sonde-c-ecom": {
       "status": "alert",
-      "lastCheck": "2026-11-16",
+      "lastCheck": "2026-11-17",
       "rating": null,
       "installs": null
     }
@@ -26,6 +26,6 @@
     "geo-site-auditor": "ok",
     "real-profit": "ok",
     "selectors-sonde-a": "ok",
-    "selectors-sonde-b": "ok"
+    "selectors-sonde-b": "down"
   }
 }
